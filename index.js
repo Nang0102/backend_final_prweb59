@@ -8,10 +8,10 @@ const userRouter = require("./router/user");
 app.use(bodyParser.json({ extended: true }));
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.json("Hello world");
-  console.log("database", db);
-});
+// app.get("/", (req, res) => {
+//   res.json("Hello world");
+//   console.log("database", db);
+// });
 
 app.use("/user", userRouter);
 
