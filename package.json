@@ -17,6 +17,7 @@
         "express": "^4.18.1",
         "mongodb": "^4.8.0",
         "nodemon": "^2.0.19",
+        "jsonwebtoken": "^8.5.1",
         "package.json": "^2.0.1",
         "request": "^2.88.2"
     }
