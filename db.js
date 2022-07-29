@@ -1,4 +1,3 @@
-
 const { MongoClient } = require("mongodb");
 
 const url =
@@ -13,10 +12,9 @@ async function connectToDb() {
   const database = client.db(dbName);
 
   db.users = database.collection("Users");
+  db.rooms = database.collection("Rooms");
 
   return "done.";
 }
 
 module.exports = { connectToDb, db };
-
-

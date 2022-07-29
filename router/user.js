@@ -37,7 +37,7 @@ userRouter.post("/login", async (req, res) => {
   return res.status(200).json({
     errCode: userData.errCode,
     message: userData.errMessage,
-    user: userData.user ? userData.user : {}
+    user: userData.user ? userData.user : {},
   });
 });
 
@@ -54,8 +54,8 @@ let handleUserLogin = async (email, username, password) => {
           let check = await bcrypt.compareSync(password, user.password);
           if (check && username === user.username) {
             userData.errCode = 0;
-              userData.errMessage = "ok";
-              delete user.password
+            userData.errMessage = "ok";
+            delete user.password;
             userData.user = user;
           } else {
             userData.errCode = 3;
@@ -92,5 +92,14 @@ let checkUserEmail = (userEmail) => {
   });
 };
 
-module.exports = userRouter;
+userRouter.get("/room", async (req, res) => {
+  const respond = db.rooms.find({}).toArray(function (err, result) {
+    if (err) throw err;
+    console.log(result);
+    res.status(200);
+    res.json(result);
+  });
+  // console.log(respond);
+});
 
+module.exports = userRouter;
