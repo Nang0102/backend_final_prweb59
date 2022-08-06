@@ -81,6 +81,7 @@ userRouter.post("/login", async (req, res) => {
     errCode: userData.errCode,
     message: userData.errMessage,
     user: userData.user ? userData.user : {},
+
     token: userData.token ? userData.token : "",
   });
 });
@@ -101,7 +102,9 @@ let handleUserLogin = async (email, username, password) => {
 
             userData.errCode = 0;
             userData.errMessage = "ok";
+
             userData.token = token;
+
             delete user.password;
             userData.user = user;
           } else {
@@ -181,4 +184,17 @@ let checkUserEmail = (userEmail) => {
   });
 };
 
+// <<<<<<< HEAD
+// =======
+// userRouter.get("/room", async (req, res) => {
+//   const respond = db.rooms.find({}).toArray(function (err, result) {
+//     if (err) throw err;
+//     console.log(result);
+//     res.status(200);
+//     res.json(result);
+//   });
+//   // console.log(respond);
+// });
+
+// >>>>>>> dev_mai_be
 module.exports = userRouter;
