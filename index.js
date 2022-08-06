@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const { connectToDb, db } = require("./db");
 const userRouter = require("./router/user");
+const roomRouter = require("./router/room");
 app.use(bodyParser.json({ extended: true }));
 app.use(cors());
 
@@ -14,6 +15,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter);
+app.use("/room", roomRouter);
 
 app.listen(port, () => {
   console.log(`App is running on ${port}`);

@@ -184,17 +184,4 @@ let checkUserEmail = (userEmail) => {
   });
 };
 
-// <<<<<<< HEAD
-// =======
-// userRouter.get("/room", async (req, res) => {
-//   const respond = db.rooms.find({}).toArray(function (err, result) {
-//     if (err) throw err;
-//     console.log(result);
-//     res.status(200);
-//     res.json(result);
-//   });
-//   // console.log(respond);
-// });
-
-// >>>>>>> dev_mai_be
 module.exports = userRouter;

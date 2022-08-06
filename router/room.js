@@ -1,18 +1,24 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
 const { db } = require("../db");
+const { ObjectId } = require("mongodb");
 const roomRouter = express.Router();
 
-userRouter.get("/room", async (req, res) => {
+roomRouter.get("/", async (req, res) => {
   try {
-  } catch (error) {}
-  const respond = db.rooms.find({}).toArray(function (err, result) {
-    if (err) throw err;
-    console.log(result);
+    const id = req.headers.id;
+    let room;
+    if (id) {
+      room = await db.rooms.findOne({ _id: new ObjectId(id) });
+    } else {
+      room = await db.rooms.find({}).toArray();
+    }
+
     res.status(200);
-    res.json(result);
-  });
-  // console.log(respond);
+    res.json(room);
+  } catch (error) {
+    res.status(500);
+    res.json("some thing went wrong" + error);
+  }
 });
 
 module.exports = roomRouter;
